@@ -1,0 +1,11 @@
+PLAYER FUNCTIONS COMPLETE:
+SeekX
+SeekY
+movePlayer
+
+
+ENEMY FUNCTIONS COMPLETE:
+spawnEnemy
+ResestEnemy
+SpawnEnemySide
+ResetEnemySide

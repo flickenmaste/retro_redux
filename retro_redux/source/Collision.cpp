@@ -1,21 +1,21 @@
-//Last Edit 10/23/2013
+//Last Edit 11/5/2013
 //Will Gilstrap
 /////////////////////
 #include "AIE.h"
 #include "Collision.h"
 
 // check collision of bullet and enemy
-bool Collision::checkCollision(movableObject& obj1, bullets& obj2) {
+bool Collision::checkCollision(Enemy& obj1, PBullet& obj2) {
 	int x; int y;
 	GetMouseLocation(x,y);
-	double rE = obj1.position.x;
-	double radiusEnemy = obj1.width / 2;
+	double rE = obj1.GetPos().GetX();
+	double radiusEnemy = obj1.GetWidth() / 2;
 
-	double rB = obj2.position.x;
-	double radiusBullet = obj2.width / 2;
+	double rB = obj2.GetPos().GetX();
+	double radiusBullet = obj2.GetWidth() / 2;
 
-	double distX = obj1.position.x - obj2.position.x;
-	double distY = obj1.position.y - obj2.position.y;
+	double distX = obj1.GetPos().GetX() - obj2.GetPos().GetX();
+	double distY = obj1.GetPos().GetY() - obj2.GetPos().GetY();
 
 	double dist = sqrt((distX * distX) + (distY * distY));
 	double radii = (radiusEnemy + radiusBullet) * (radiusEnemy + radiusBullet);
@@ -26,17 +26,17 @@ bool Collision::checkCollision(movableObject& obj1, bullets& obj2) {
 		return false;
 }
 // check collision of enemy and player
-bool Collision::checkCollision(movableObject& obj1, movableObject& obj2) {
+bool Collision::checkCollision(Enemy& obj1, Player& obj2) {
 	int x; int y;
 	GetMouseLocation(x,y);
-	double rE = obj1.position.x;
-	double radiusEnemy = obj1.width / 2;
+	double rE = obj1.GetPos().GetX();
+	double radiusEnemy = obj1.GetWidth() / 2;
 
-	double rB = obj2.position.x;
-	double radiusBullet = obj2.width / 2;
+	double rB = obj2.GetPos().GetX();
+	double radiusBullet = obj2.GetWidth() / 2;
 
-	double distX = obj1.position.x - obj2.position.x;
-	double distY = obj1.position.y - obj2.position.y;
+	double distX = obj1.GetPos().GetX() - obj2.GetPos().GetX();
+	double distY = obj1.GetPos().GetY() - obj2.GetPos().GetY();
 
 	double dist = sqrt((distX * distX) + (distY * distY));
 	double radii = (radiusEnemy + radiusBullet) * (radiusEnemy + radiusBullet);
@@ -47,17 +47,17 @@ bool Collision::checkCollision(movableObject& obj1, movableObject& obj2) {
 		return false;
 }
 
-bool collision::checkCollision(movableObject& obj1, enemybullets& obj2) {
+bool Collision::checkCollision(Player& obj1, EBullet& obj2) {
 	int x; int y;
 	GetMouseLocation(x,y);
-	double rE = obj1.position.x;
+	double rE = obj1.GetPos().GetX();
 	double radiusEnemy = 5;
 
-	double rB = obj2.position.x;
-	double radiusBullet = obj2.width / 2;
+	double rB = obj2.GetPos().GetX();
+	double radiusBullet = obj2.GetWidth() / 2;
 
-	double distX = obj1.position.x - obj2.position.x;
-	double distY = obj1.position.y - obj2.position.y;
+	double distX = obj1.GetPos().GetX() - obj2.GetPos().GetX();
+	double distY = obj1.GetPos().GetY() - obj2.GetPos().GetY();
 
 	double dist = sqrt((distX * distX) + (distY * distY));
 	double radii = (radiusEnemy + radiusBullet) * (radiusEnemy + radiusBullet);

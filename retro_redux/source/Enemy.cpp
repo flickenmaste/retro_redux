@@ -1,4 +1,4 @@
-//Last Edit 11/4/2013
+//Last Edit 11/5/2013
 //Will Gilstrap
 /////////////////////
 #include <stdlib.h>
@@ -12,23 +12,23 @@ static const int SCREEN_Y = 780;
 void Enemy::SpawnEnemy(Enemy& obj)	// function to spawn a basic enemy
 {
 	int spawn = rand() % SCREEN_X;
-	if (obj.m_vPosition.GetY() > SCREEN_Y)
-	obj.m_vPosition.SetX(spawn);
-	if (obj.m_vPosition.GetY() > SCREEN_Y)
-	obj.m_vPosition.SetY(0);
+	if (obj.GetPos().GetY() > SCREEN_Y)
+	obj.GetPos().SetX(spawn);
+	if (obj.GetPos().GetY() > SCREEN_Y)
+	obj.GetPos().SetY(0);
 	else {
-	int y = obj.m_vPosition.GetY();
+	int y = obj.GetPos().GetY();
 	y += obj.m_vSpeed.GetY();
 
-	obj.m_vPosition.SetY(y);
+	obj.GetPos().SetY(y);
 	}
 }
 
 void Enemy::ResetEnemy(Enemy& obj)
 {
 	int spawn = rand() % SCREEN_X;
-	obj.m_vPosition.SetX(spawn);
-	obj.m_vPosition.SetY(0);
+	obj.GetPos().SetX(spawn);
+	obj.GetPos().SetY(0);
 }
 
 void Enemy::SpawnEnemySide(Enemy& obj)	// function to spawn a basic enemy
@@ -39,37 +39,37 @@ void Enemy::SpawnEnemySide(Enemy& obj)	// function to spawn a basic enemy
 	int spawnSide = 0;
 
 
-	if (obj.m_vPosition.GetX() >= 640)
+	if (obj.GetPos().GetX() >= 640)
 	{
-		int x = obj.m_vPosition.GetX();
+		int x = obj.GetPos().GetX();
 		x -= 1;
-		int y = obj.m_vPosition.GetY();
+		int y = obj.GetPos().GetY();
 		y += obj.m_vSpeed.GetY();
 
-		obj.m_vPosition.SetX(x);
-		obj.m_vPosition.SetY(y);
+		obj.GetPos().SetX(x);
+		obj.GetPos().SetY(y);
 	}
 	
-	if (obj.m_vPosition.GetX() <= 640)
+	if (obj.GetPos().GetX() <= 640)
 	{
-		int x = obj.m_vPosition.GetX();
+		int x = obj.GetPos().GetX();
 		x += 1;
-		int y = obj.m_vPosition.GetY();
+		int y = obj.GetPos().GetY();
 		y += obj.m_vSpeed.GetY();
 
-		obj.m_vPosition.SetX(x);
-		obj.m_vPosition.SetY(y);
+		obj.GetPos().SetX(x);
+		obj.GetPos().SetY(y);
 	}
 
-	if (obj.m_vPosition.GetY() > SCREEN_Y / 2)
+	if (obj.GetPos().GetY() > SCREEN_Y / 2)
 	{
-		int y = obj.m_vPosition.GetY();
+		int y = obj.GetPos().GetY();
 		y += obj.m_vSpeed.GetY();
 
-		obj.m_vPosition.SetY(y);
+		obj.GetPos().SetY(y);
 	}
 
-	if (obj.m_vPosition.GetY() > SCREEN_Y)
+	if (obj.GetPos().GetY() > SCREEN_Y)
 		ResetEnemySide(obj);
 
 }
@@ -78,6 +78,27 @@ void Enemy::ResetEnemySide(Enemy& obj)
 {
 	int spawn = rand() % SCREEN_X;
 
-	obj.m_vPosition.SetX(spawn);
-	obj.m_vPosition.SetY(0);
+	obj.GetPos().SetX(spawn);
+	obj.GetPos().SetY(0);
+}
+
+void Enemy::EnemyShoot(EBullet& obj, Enemy& enemy)
+{
+	float speed = 2;
+
+	if (obj.GetPos().GetY() <= 0)
+	{
+		obj.GetPos().SetX(enemy.GetPos().GetX());
+		obj.GetPos().SetY(enemy.GetPos().GetY());
+	}
+
+	if (obj.GetPos().GetY() >= 780)
+	{
+		obj.GetPos().SetX(enemy.GetPos().GetX());
+		obj.GetPos().SetY(enemy.GetPos().GetY());
+	}
+	
+	float moveSpeed = obj.GetPos().GetY(); 
+	moveSpeed += speed;
+	obj.GetPos().SetY(moveSpeed);
 }

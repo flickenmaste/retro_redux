@@ -99,10 +99,23 @@
   <ItemGroup>
     <None Include="ReadMe.txt" />
     <None Include="resources\fonts\arial.fnt" />
+    <None Include="resources\images\bg.jpg" />
+    <None Include="resources\images\bg.png" />
+    <None Include="resources\images\bomb.png" />
+    <None Include="resources\images\bullet.png" />
+    <None Include="resources\images\enemy.png" />
+    <None Include="resources\images\enemybullet.png" />
+    <None Include="resources\images\enemybullet2.png" />
+    <None Include="resources\images\enemybullet3.png" />
+    <None Include="resources\images\gameover.jpg" />
+    <None Include="resources\images\menu3.jpg" />
+    <None Include="resources\images\player.png" />
+    <None Include="resources\images\splash.png" />
     <None Include="resources\shaders\StaticFW_Pixel.glsl" />
     <None Include="resources\shaders\StaticFW_Vertex.glsl" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="source\Collision.cpp" />
     <ClCompile Include="source\Enemy.cpp" />
     <ClCompile Include="source\GameEngine.cpp" />
     <ClCompile Include="source\main.cpp" />
@@ -112,12 +125,14 @@
   <ItemGroup>
     <ClInclude Include="include\AIE.h" />
     <ClInclude Include="include\Bullets.h" />
+    <ClInclude Include="include\Collision.h" />
     <ClInclude Include="include\Enemy.h" />
     <ClInclude Include="include\GameEngine.h" />
     <ClInclude Include="include\GameStates.h" />
     <ClInclude Include="include\Player.h" />
     <ClInclude Include="include\Sprite.h" />
     <ClInclude Include="include\Vector2.h" />
+    <ClInclude Include="include\Vector3.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

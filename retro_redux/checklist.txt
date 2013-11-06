@@ -2,6 +2,11 @@ PLAYER FUNCTIONS COMPLETE:
 SeekX
 SeekY
 movePlayer
+PlayerShoot
+IfAlive
+GetPlayerLocationX
+GetPlayerLocationY
+IfDead
 
 
 ENEMY FUNCTIONS COMPLETE:
@@ -9,3 +14,4 @@ spawnEnemy
 ResestEnemy
 SpawnEnemySide
 ResetEnemySide
+EnemyShoot1

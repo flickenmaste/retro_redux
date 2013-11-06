@@ -1,7 +1,7 @@
-//Last Edit 11/4/2013
+//Last Edit 11/5/2013
 //Will Gilstrap
 /////////////////////
-
+#include "AIE.h"
 #include "Sprite.h"
 
 // Get Set v_position
@@ -14,6 +14,14 @@
 	{
 		return m_vPosition;
 	}
+	float Sprite::GetPosX()
+	{
+		return this->m_vPosition.GetX();
+	}
+	float Sprite::GetPosY()
+	{
+		return this->m_vPosition.GetY();
+	}
 	// Get Set v_speed
 	void Sprite::SetSpeed(const float &x, const float &y)
 	{
@@ -25,9 +33,9 @@
 		return m_vSpeed;
 	}
 	// Get Set iSpriteID
-	void Sprite::SetSpriteID()
+	void Sprite::SetSpriteID(Sprite &name, const char* a_Texture, int a_iWidth, int a_iHeight)
 	{
-		// do something here
+		name.m_iSpriteID = CreateSprite( a_Texture, a_iWidth, a_iHeight, true ); // do something here
 	}
 	int Sprite::GetSpriteID()
 	{

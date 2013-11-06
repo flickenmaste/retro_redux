@@ -1,4 +1,4 @@
-//Last Edit 11/4/2013
+//Last Edit 11/5/2013
 //Will Gilstrap
 /////////////////////
 #ifndef _BULLETS_H_
@@ -8,7 +8,7 @@
 
 class Bullet: public Sprite
 {
-private:
+public:
 	bool alive;
 	bool dead;
 };

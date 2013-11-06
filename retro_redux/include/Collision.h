@@ -1,4 +1,4 @@
-//Last Edit 11/4/2013
+//Last Edit 11/5/2013
 //Will Gilstrap
 /////////////////////
 #ifndef _COLLISION_H_
@@ -12,9 +12,9 @@
 class Collision
 {
 public:
-	bool checkCollision(movableObject& obj1, bullets& obj2);
-	bool checkCollision(movableObject& obj1, movableObject& obj2);
-	bool checkCollision(movableObject& obj1, enemybullets& obj2);
+	bool checkCollision(Enemy& obj1, PBullet& obj2);
+	bool checkCollision(Enemy& obj1, Player& obj2);
+	bool checkCollision(Player& obj1, EBullet& obj2);
 };
 
 

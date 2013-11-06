@@ -15,6 +15,18 @@
     <None Include="resources\fonts\arial.fnt" />
     <None Include="resources\shaders\StaticFW_Pixel.glsl" />
     <None Include="resources\shaders\StaticFW_Vertex.glsl" />
+    <None Include="resources\images\bg.jpg" />
+    <None Include="resources\images\bg.png" />
+    <None Include="resources\images\bomb.png" />
+    <None Include="resources\images\bullet.png" />
+    <None Include="resources\images\enemy.png" />
+    <None Include="resources\images\enemybullet.png" />
+    <None Include="resources\images\enemybullet2.png" />
+    <None Include="resources\images\enemybullet3.png" />
+    <None Include="resources\images\gameover.jpg" />
+    <None Include="resources\images\menu3.jpg" />
+    <None Include="resources\images\player.png" />
+    <None Include="resources\images\splash.png" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\main.cpp">
@@ -30,6 +42,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="source\Enemy.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Collision.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -56,6 +71,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\Bullets.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Vector3.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Collision.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

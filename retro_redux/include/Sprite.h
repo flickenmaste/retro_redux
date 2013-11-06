@@ -1,4 +1,4 @@
-//Last Edit 11/4/2013
+//Last Edit 11/5/2013
 //Will Gilstrap
 /////////////////////
 #ifndef _SPRITE_H_
@@ -12,13 +12,15 @@ public:
 	// Get Set v_position
 	void SetPos(const float &x, const float &y);
 	vector2 GetPos();
+	float GetPosX();
+	float GetPosY();
 
 	// Get Set v_speed
 	void SetSpeed(const float &x, const float &y);
 	vector2 GetSpeed();
 
 	// Get Set iSpriteID
-	void SetSpriteID();
+	void SetSpriteID(Sprite &name, const char* a_Texture, int a_iWidth, int a_iHeight);
 	int GetSpriteID();
 
 	// Get Set iWidth

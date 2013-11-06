@@ -1,9 +1,12 @@
 //class vector 2d
-//Last Edit 11/4/2013
+//Last Edit 11/5/2013
 //Will Gilstrap
 /////////////////////
 #ifndef _VECTOR2_H_
 #define _VECTOR2_H_
+
+#include <math.h>
+#include <stdlib.h>
 
 class vector2
 {
@@ -21,7 +24,7 @@ public:
 	{
 		vector2 temp;
 		temp.x = this->x + w.x;
-		temp.y = this->x + w.y;
+		temp.y = this->y + w.y;
 		return temp;
 	}
 
@@ -37,7 +40,7 @@ public:
 	{
 		vector2 temp;
 		temp.x = this->x - w.x;
-		temp.y = this->x - w.y;
+		temp.y = this->y - w.y;
 		return temp;
 	}
 
@@ -57,11 +60,20 @@ public:
 		return temp;
 	}
 
-	float dotProduct(vector2 &a, vector2 &b) 
+	float DotProduct(vector2 &a, vector2 &b) 
 	{ 
 		return (a.x * b.x + a.y * b.y); 
-	} 
+	}
 
+	vector2 getNormal(vector2 &v) 
+	{
+		float mag = sqrt(v.x*v.x + v.y*v.y);
+		vector2 result;
+		result.SetX(v.x/mag);
+		result.SetY(v.y/mag);
+		return result;
+	}
+	
 private:
 	float x;
 	float y;

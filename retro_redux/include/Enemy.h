@@ -1,4 +1,4 @@
-//Last Edit 11/4/2013
+//Last Edit 11/5/2013
 //Will Gilstrap
 /////////////////////
 #ifndef _ENEMY_H_
@@ -15,7 +15,7 @@ public:
 	void ResetEnemy(Enemy& obj);
 	void SpawnEnemySide(Enemy& obj);
 	void ResetEnemySide(Enemy& obj);
-	void EnemyShoot(Enemy& obj);
+	void EnemyShoot(EBullet& obj, Enemy& enemy);
 	void EnemyShoot(int x, int y);
 
 };

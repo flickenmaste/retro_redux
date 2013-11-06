@@ -1,4 +1,4 @@
-//Last Edit 11/5/2013
+//Last Edit 11/6/2013
 //Will Gilstrap
 /////////////////////
 #include "AIE.H"
@@ -11,6 +11,7 @@
 //#include "GameStates.h"
 
 int frameCounter = 0;
+Menu m;
 
 void Engine::RunEngine()
 {
@@ -102,20 +103,21 @@ void Engine::InitMenu()
 	bgMenu = CreateSprite( "./images/menu3.jpg", GetScreenX(), GetScreenY(), true );
 	MoveSprite(bgMenu, GetScreenX()>>1, GetScreenY()>>1);
 	int tick = 0;
-
+	Process = &Menu::MenuState;
 	do {
-		MenuState(tick, splash, bgMenu);
+		(this->*Process)(tick, splash, bgMenu);
 
 	} while ( FrameworkUpdate() == false );
+	m.DestroyMenu(splash, bgMenu);
 }
 
-void Engine::UpdateMenu()
+void Menu::UpdateMenu()
 {
 	//if (IsKeyDown(32) == true)
 		//gameProcess = &playState;
 }
 
-void Engine::DrawMenu(int &tick, Sprite &splash, unsigned int &bgMenu)
+void Menu::DrawMenu(int &tick, Sprite &splash, unsigned int &bgMenu)
 {
 
 	if (tick <= 1000)
@@ -136,14 +138,15 @@ void Engine::DrawMenu(int &tick, Sprite &splash, unsigned int &bgMenu)
 	}
 }
 
-void Engine::DestroyMenu()
+void Menu::DestroyMenu(Sprite &splash, unsigned int &bgMenu)
 {
-	//DestroySprite(bgMenu);
+	DestroySprite(splash.GetSpriteID());
+	DestroySprite(bgMenu);
 }
 
 void Engine::MenuState(int &tick, Sprite &splash, unsigned int &bgMenu)
 {
 	ClearScreen();
-	UpdateMenu();
-	DrawMenu(tick, splash, bgMenu);
+	m.UpdateMenu();
+	m.DrawMenu(tick, splash, bgMenu);
 }

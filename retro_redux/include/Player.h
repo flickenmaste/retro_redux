@@ -1,4 +1,4 @@
-//Last Edit 11/5/2013
+//Last Edit 11/6/2013
 //Will Gilstrap
 /////////////////////
 #ifndef _PLAYER_H_
@@ -21,7 +21,7 @@ public:
 	int GetPlayerLocationX(Player& player);
 	int GetPlayerLocationY(Player& player);
 	void IfDead(PBullet& obj, PBullet& obj2, PBullet& obj3, Player &player);	// executed if bullets leave screen
-
+	Player() { m_vPosition.SetX(0); m_vPosition.SetY(0); SetWidth(0); SetHeight(0); };
 };
 
 #endif

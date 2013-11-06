@@ -1,11 +1,11 @@
-//Last Edit 11/5/2013
+//Last Edit 11/6/2013
 //Will Gilstrap
 /////////////////////
 #include "AIE.h"
 #include "Collision.h"
 
 // check collision of bullet and enemy
-bool Collision::checkCollision(Enemy& obj1, PBullet& obj2) {
+bool Collision::CheckCollision(Enemy& obj1, PBullet& obj2) {
 	int x; int y;
 	GetMouseLocation(x,y);
 	double rE = obj1.GetPos().GetX();
@@ -26,7 +26,7 @@ bool Collision::checkCollision(Enemy& obj1, PBullet& obj2) {
 		return false;
 }
 // check collision of enemy and player
-bool Collision::checkCollision(Enemy& obj1, Player& obj2) {
+bool Collision::CheckCollision(Enemy& obj1, Player& obj2) {
 	int x; int y;
 	GetMouseLocation(x,y);
 	double rE = obj1.GetPos().GetX();
@@ -47,7 +47,7 @@ bool Collision::checkCollision(Enemy& obj1, Player& obj2) {
 		return false;
 }
 
-bool Collision::checkCollision(Player& obj1, EBullet& obj2) {
+bool Collision::CheckCollision(Player& obj1, EBullet& obj2) {
 	int x; int y;
 	GetMouseLocation(x,y);
 	double rE = obj1.GetPos().GetX();

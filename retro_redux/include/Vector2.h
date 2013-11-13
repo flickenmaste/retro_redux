@@ -17,8 +17,8 @@ public:
 	float GetX() {return x;}
 	float GetY() {return y;}
 	// Sets
-	void SetX(float nextX) {x = nextX;}
-	void SetY(float nextY) {y = nextY;}
+	void SetX(float nextX) {this->x = nextX;}
+	void SetY(float nextY) {this->y = nextY;}
 
 	vector2 operator+ (const vector2 &w)
 	{

@@ -115,9 +115,11 @@
     <None Include="resources\shaders\StaticFW_Vertex.glsl" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="source\Bullets.cpp" />
     <ClCompile Include="source\Collision.cpp" />
     <ClCompile Include="source\Enemy.cpp" />
     <ClCompile Include="source\GameEngine.cpp" />
+    <ClCompile Include="source\highScores.cpp" />
     <ClCompile Include="source\main.cpp" />
     <ClCompile Include="source\Player.cpp" />
     <ClCompile Include="source\Sprite.cpp" />
@@ -129,6 +131,7 @@
     <ClInclude Include="include\Enemy.h" />
     <ClInclude Include="include\GameEngine.h" />
     <ClInclude Include="include\GameStates.h" />
+    <ClInclude Include="include\highScores.h" />
     <ClInclude Include="include\Player.h" />
     <ClInclude Include="include\Sprite.h" />
     <ClInclude Include="include\Vector2.h" />

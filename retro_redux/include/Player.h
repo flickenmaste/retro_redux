@@ -1,4 +1,4 @@
-//Last Edit 11/6/2013
+//Last Edit 11/12/2013
 //Will Gilstrap
 /////////////////////
 #ifndef _PLAYER_H_
@@ -13,15 +13,15 @@
 class Player: public Sprite
 {
 public:
-	void SeekX(Player& player, Player& mouse);
-	void SeekY(Player& player, Player& mouse);
+	void SeekX(Player& mouse);
+	void SeekY(Player& mouse);
 	void MovePlayer(Player& obj);
 	void PlayerShoot(PBullet& obj, PBullet& obj2, PBullet& obj3);
-	void IfAlive(PBullet& obj, PBullet& obj2, PBullet& obj3);
+	//void IfAlive(PBullet& obj, PBullet& obj2, PBullet& obj3);
 	int GetPlayerLocationX(Player& player);
 	int GetPlayerLocationY(Player& player);
 	void IfDead(PBullet& obj, PBullet& obj2, PBullet& obj3, Player &player);	// executed if bullets leave screen
-	Player() { m_vPosition.SetX(0); m_vPosition.SetY(0); SetWidth(0); SetHeight(0); };
+	Player() { this->m_vPosition.SetX(600); this->m_vPosition.SetY(300); this->SetWidth(100); this->SetHeight(50); };
 };
 
 #endif

@@ -1,4 +1,4 @@
-//Last Edit 11/6/2013
+//Last Edit 11/12/2013
 //Will Gilstrap
 /////////////////////
 #ifndef _SPRITE_H_
@@ -11,7 +11,7 @@ class Sprite
 public:
 	// Get Set v_position
 	void SetPos(const float &x, const float &y);
-	vector2 GetPos();
+	vector2& GetPos();
 	float GetPosX();
 	float GetPosY();
 

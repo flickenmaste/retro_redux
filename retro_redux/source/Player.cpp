@@ -1,68 +1,69 @@
-//Last Edit 11/6/2013
+//Last Edit 11/12/2013
 //Will Gilstrap
 /////////////////////
 #include "AIE.h"
 #include "GameEngine.h"
 #include "Player.h"
+#include  <iostream>
 
 static const int SCREEN_X = 1280;
 static const int SCREEN_Y = 780;
 
 
-void Player::SeekX(Player& player, Player& mouse) // code to make the player sprite follow behind mouse
+void Player::SeekX(Player& mouse) // code to make the player sprite follow behind mouse
 {
 	float speed = 1;
-	float x = player.GetPos().GetX();
+	float x = GetPos().GetX();
 
-	if(player.GetPos().GetX() < mouse.GetPos().GetX() - speed) {
-		int diff = mouse.GetPos().GetX() - player.GetPos().GetX();
+	if(GetPos().GetX() < mouse.GetPos().GetX() - speed) {
+		int diff = mouse.GetPos().GetX() - GetPos().GetX();
 		if(diff > speed) {
 			x += speed;
-			player.GetPos().SetX(x);
+			GetPos().SetX(x);
 		}
 		else {
 			x += diff;
-			player.GetPos().SetX(x);
+			GetPos().SetX(x);
 		}
 	}
-	else if (player.GetPos().GetX() > mouse.GetPos().GetX() + speed) {
-		int diff = player.GetPos().GetX() - mouse.GetPos().GetX();
+	else if (GetPos().GetX() > mouse.GetPos().GetX() + speed) {
+		int diff = GetPos().GetX() - mouse.GetPos().GetX();
 		if(diff > speed) {
 			x -= speed;
-			player.GetPos().SetX(x);
+			GetPos().SetX(x);
 		}
 		else {
 			x -= diff;
-			player.GetPos().SetX(x);
+			GetPos().SetX(x);
 		}
 }
 }
 
-void Player::SeekY(Player& player, Player& mouse) // code to make the player sprite follow behind mouse
+void Player::SeekY(Player& mouse) // code to make the player sprite follow behind mouse
 {
 	float speed = 1;
-	float y = player.GetPos().GetY();
+	float y = GetPos().GetY();
 
-	if(player.GetPos().GetY() < mouse.GetPos().GetY() - speed) {
-		int diff = mouse.GetPos().GetY() - player.GetPos().GetY();
+	if(GetPos().GetY() < mouse.GetPos().GetY() - speed) {
+		int diff = mouse.GetPos().GetY() - GetPos().GetY();
 		if(diff > speed) {
 			y += speed;
-			player.GetPos().SetY(y);
+			GetPos().SetY(y);
 		}
 		else {
 			y += diff;
-			player.GetPos().SetY(y);
+			GetPos().SetY(y);
 		}
 	}
-	else if (player.GetPos().GetY() > mouse.GetPos().GetY() + speed) {
-		int diff = player.GetPos().GetY() - mouse.GetPos().GetY();
+	else if (GetPos().GetY() > mouse.GetPos().GetY() + speed) {
+		int diff = GetPos().GetY() - mouse.GetPos().GetY();
 		if(diff > speed) {
 			y -= speed;
-			player.GetPos().SetY(y);
+			GetPos().SetY(y);
 		}
 		else {
 			y -= diff;
-			player.GetPos().SetY(y);
+			GetPos().SetY(y);
 		}
 	}
 }
@@ -83,59 +84,38 @@ void Player::MovePlayer(Player& obj)	// function to make the player sprite follo
 	mouse.SetHeight(50);
 
 	if (x <= SCREEN_X) // to keep player going off screen
-		SeekX(obj, mouse);
+		SeekX( mouse);
 	if (y <= SCREEN_Y)	// to keep player going off screen
-		SeekY(obj, mouse);
+		SeekY( mouse);
 	MoveSprite(obj.GetSpriteID(), obj.GetPos().GetX(), obj.GetPos().GetY());
+	
 	return;
 }
 
 void Player::PlayerShoot(PBullet& obj, PBullet& obj2, PBullet& obj3)	// function to test if player is shooting or not
 {
 	// bullet 1
+	if (GetMouseButtonDown(MOUSE_BUTTON_1) == true){
 	int x; int y;
 	GetMouseLocation(x,y);
-	if (obj.GetPos().GetY() < 0)
-	obj.dead = true;
-	else
+	if(obj.dead)
+	{
 		obj.dead = false;
-	if (obj.GetPos().GetY() < 0)
-	obj.dead = true;
-	else
-		obj.dead = false;
-	if (GetMouseButtonDown(MOUSE_BUTTON_1) == true)
-	obj.alive = true;
-	
-
-	// bullet 2
-	if (obj2.GetPos().GetY() < 0 || obj2.GetPos().GetX() < 0)
-	obj2.dead = true;
-	else
+	}
+	if(obj2.dead)
+	{
 		obj2.dead = false;
-	if (obj2.GetPos().GetY() < 0 || obj2.GetPos().GetX() < 0)
-	obj2.dead = true;
-	else
-		obj2.dead = false;
-	if (GetMouseButtonDown(MOUSE_BUTTON_1) == true)
-	obj2.alive = true;
-	
-
-	//bullet 3
-	if (obj3.GetPos().GetY() < 0)
-	obj3.dead = true;
-	else
+	}
+	if(obj3.dead)
+	{
 		obj3.dead = false;
-	if (obj3.GetPos().GetY() < 0)
-	obj3.dead = true;
-	else
-		obj3.dead = false;
-	if (GetMouseButtonDown(MOUSE_BUTTON_1) == true)
-	obj3.alive = true;
-	
+	}
 
-	return;
+	}
+	
 }
 
+/*
 void Player::IfAlive(PBullet& obj, PBullet& obj2, PBullet& obj3)	// function executed if player is shooting
 {
 
@@ -144,7 +124,7 @@ void Player::IfAlive(PBullet& obj, PBullet& obj2, PBullet& obj3)	// function exe
 	y1 -= obj.GetSpeed().GetY();
 
 	obj.GetPos().SetY(y1);
-	
+
 	//bullet 2
 	int x1 = obj2.GetPos().GetX();
 	int y2 = obj2.GetSpeed().GetY();
@@ -164,6 +144,8 @@ void Player::IfAlive(PBullet& obj, PBullet& obj2, PBullet& obj3)	// function exe
 	obj3.GetPos().SetY(y3);
 
 }
+*/
+
 
 int Player::GetPlayerLocationX(Player& player)
 {
@@ -201,6 +183,6 @@ void Player::IfDead(PBullet& obj, PBullet& obj2, PBullet& obj3, Player &player)
 	if (obj3.GetPos().GetY() < 0)
 	obj3.GetPos().SetY(y);
 
-	obj.alive = false; obj2.alive = false; obj2.alive = false;
+	obj.dead = obj2.dead =obj3.dead =true;
 	}
 }

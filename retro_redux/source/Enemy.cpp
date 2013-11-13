@@ -1,4 +1,4 @@
-//Last Edit 11/6/2013
+//Last Edit 11/12/2013
 //Will Gilstrap
 /////////////////////
 #include <stdlib.h>
@@ -115,20 +115,20 @@ void Enemy::CheckEnemyCollision(Enemy& enemy, Enemy& enemy2, Enemy& enemy3, PBul
 	{
 		//scores++;
 		//checkKilled++;
-		ResetEnemy(enemy);
+		Enemy::ResetEnemy(enemy);
 	}
 
 	if (Collision::CheckCollision(enemy2, playerBullet) == true || Collision::CheckCollision(enemy2, playerBullet2) == true || Collision::CheckCollision(enemy2, playerBullet3) == true)
 	{
 		//scores++;
 		//checkKilled++;
-		ResetEnemy(enemy2);
+		Enemy::ResetEnemy(enemy2);
 	}
 
 	if (Collision::CheckCollision(enemy3, playerBullet) == true || Collision::CheckCollision(enemy3, playerBullet2) == true || Collision::CheckCollision(enemy3, playerBullet3) == true)
 	{
 		//scores++;
 		//checkKilled++;
-		ResetEnemy(enemy3);
+		Enemy::ResetEnemy(enemy3);
 	}
 }

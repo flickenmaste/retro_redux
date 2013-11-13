@@ -1,4 +1,4 @@
-//Last Edit 11/6/2013
+//Last Edit 11/12/2013
 //Will Gilstrap
 /////////////////////
 #include "AIE.h"
@@ -10,7 +10,7 @@
 		this->m_vPosition.SetX(x);
 		this->m_vPosition.SetY(y);
 	}
-	vector2 Sprite::GetPos()
+	vector2& Sprite::GetPos()
 	{
 		return m_vPosition;
 	}

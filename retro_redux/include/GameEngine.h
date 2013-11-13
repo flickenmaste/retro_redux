@@ -1,4 +1,4 @@
-//Last Edit 11/12/2013
+//Last Edit 11/13/2013
 //Will Gilstrap
 /////////////////////
 #ifndef _GAMEENGINE_H_
@@ -31,6 +31,11 @@ public:
 	void PlayState(EBullet * enemyHell[], unsigned int& bgImage, unsigned int& bgGameOver, Player& player1, PBullet& playerBullet, 
 	PBullet& playerBullet2, PBullet& playerBullet3, Enemy& enemy, Enemy& enemy2, Enemy& enemy3, Enemy& boss, Enemy& enemyB1, Enemy& enemyB2, EBullet& enemyBullet);
 
+	void InitBoss(int &tick, Sprite &splash, unsigned int &bgMenu, EBullet * enemyHell[], unsigned int& bgImage, unsigned int& bgGameOver, Player& player1, PBullet& playerBullet, 
+	PBullet& playerBullet2, PBullet& playerBullet3, Enemy& enemy, Enemy& enemy2, Enemy& enemy3, Enemy& boss, Enemy& enemyB1, Enemy& enemyB2, EBullet& enemyBullet);
+	void BossState(unsigned int& bgImage, Player& player1, PBullet& playerBullet, 
+	PBullet& playerBullet2, PBullet& playerBullet3, Enemy& boss, Enemy& enemyB1, Enemy& enemyB2);
+
 	// Gets
 	int GetScreenX() {return m_SCREEN_X;}
 	int GetScreenY() {return m_SCREEN_Y;}
@@ -58,6 +63,22 @@ public:
 	PBullet& playerBullet2, PBullet& playerBullet3, Enemy& enemy, Enemy& enemy2, Enemy& enemy3, Enemy& boss, Enemy& enemyB1, Enemy& enemyB2, EBullet& enemyBullet);
 	void DrawGame(EBullet * enemyHell[], unsigned int& bgImage, unsigned int& bgGameOver, Player& player1, PBullet& playerBullet, 
 	PBullet& playerBullet2, PBullet& playerBullet3, Enemy& enemy, Enemy& enemy2, Enemy& enemy3, Enemy& boss, Enemy& enemyB1, Enemy& enemyB2, EBullet& enemyBullet);
+};
+
+class GameOver: public Engine
+{
+public:
+	unsigned int GameO;
+	void UpdateGO();
+};
+
+class Boss: public Engine
+{
+public:
+	void UpdateBoss(unsigned int& bgImage, Player& player1, PBullet& playerBullet, 
+	PBullet& playerBullet2, PBullet& playerBullet3, Enemy& boss, Enemy& enemyB1, Enemy& enemyB2);
+	void DrawBoss(unsigned int& bgImage, Player& player1, PBullet& playerBullet, 
+	PBullet& playerBullet2, PBullet& playerBullet3, Enemy& boss, Enemy& enemyB1, Enemy& enemyB2);
 };
 
 #endif

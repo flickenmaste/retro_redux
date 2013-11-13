@@ -61,9 +61,6 @@
     <ClInclude Include="include\GameEngine.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\GameStates.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="include\Vector2.h">
       <Filter>Header Files</Filter>
     </ClInclude>

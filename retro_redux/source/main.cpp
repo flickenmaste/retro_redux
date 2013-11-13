@@ -1,4 +1,4 @@
-//Last Edit 11/12/2013
+//Last Edit 11/13/2013
 //Will Gilstrap
 /////////////////////
 #include "AIE.h"
@@ -10,7 +10,6 @@ HighScore h;
 int main()
 {
 	Engine shmup;
-	Initialise(shmup.GetScreenX(), shmup.GetScreenY(), false, "Shoot em up 2");
 	shmup.RunEngine();
 	h.read();
 	Shutdown();

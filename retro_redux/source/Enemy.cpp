@@ -1,4 +1,4 @@
-//Last Edit 11/12/2013
+//Last Edit 11/13/2013
 //Will Gilstrap
 /////////////////////
 #include <stdlib.h>
@@ -75,7 +75,7 @@ void Enemy::SpawnEnemySide(Enemy& obj)	// function to spawn a basic enemy
 
 }
 
-void Enemy::ResetEnemySide(Enemy& obj)
+void Enemy::ResetEnemySide(Enemy& obj) // reset enemy side
 {
 	int spawn = rand() % SCREEN_X;
 
@@ -83,7 +83,7 @@ void Enemy::ResetEnemySide(Enemy& obj)
 	obj.GetPos().SetY(0);
 }
 
-void Enemy::EnemyShoot(EBullet& obj, Enemy& enemy)
+void Enemy::EnemyShoot(EBullet& obj, Enemy& enemy) // enemy shoot
 {
 	float speed = 2;
 
@@ -105,30 +105,59 @@ void Enemy::EnemyShoot(EBullet& obj, Enemy& enemy)
 }
 
 
-void Enemy::CheckEnemyCollision(Enemy& enemy, Enemy& enemy2, Enemy& enemy3, PBullet& playerBullet, PBullet& playerBullet2, PBullet& playerBullet3, Player& player)
+void Enemy::CheckEnemyCollision(Enemy& enemy, Enemy& enemy2, Enemy& enemy3, PBullet& playerBullet, PBullet& playerBullet2, PBullet& playerBullet3, Player& player) // check collision of enemys
 {
-	Player p;
+
 	if (playerBullet.dead == true && playerBullet2.dead == true && playerBullet3.dead == true)
-		p.IfDead(playerBullet, playerBullet2, playerBullet3, player);
+		player.IfDead(playerBullet, playerBullet2, playerBullet3, player);
 
 	if (Collision::CheckCollision(enemy, playerBullet) == true || Collision::CheckCollision(enemy, playerBullet2) == true || Collision::CheckCollision(enemy, playerBullet3) == true)
 	{
 		//scores++;
 		//checkKilled++;
-		Enemy::ResetEnemy(enemy);
+		enemy.ResetEnemy(enemy);
 	}
 
 	if (Collision::CheckCollision(enemy2, playerBullet) == true || Collision::CheckCollision(enemy2, playerBullet2) == true || Collision::CheckCollision(enemy2, playerBullet3) == true)
 	{
 		//scores++;
 		//checkKilled++;
-		Enemy::ResetEnemy(enemy2);
+		enemy2.ResetEnemy(enemy2);
 	}
 
 	if (Collision::CheckCollision(enemy3, playerBullet) == true || Collision::CheckCollision(enemy3, playerBullet2) == true || Collision::CheckCollision(enemy3, playerBullet3) == true)
 	{
 		//scores++;
 		//checkKilled++;
-		Enemy::ResetEnemy(enemy3);
+		enemy3.ResetEnemy(enemy3);
 	}
+}
+
+void Enemy::CheckEnemyCollision(PBullet& playerBullet, PBullet& playerBullet2, PBullet& playerBullet3, Player& player) // check collision
+{
+	if (playerBullet.dead == true && playerBullet2.dead == true && playerBullet3.dead == true)
+		player.IfDead(playerBullet, playerBullet2, playerBullet3, player);
+}
+
+void Enemy::EnemyPattern(Enemy& enemyB2) // enemy movement for boss
+{
+	static float angle = 0.0;
+	float pi = 3.14;
+	angle += 0.01;
+	float inc = 0.0;
+	float bossPosX = 1280 / 2;
+	float bossPosY = 680 / 6;
+
+	float cosWav = (bossPosX) + cosf( angle+inc ) * 200;
+	float sinWav = (bossPosY) + sinf( angle+inc ) * 200;
+
+	this->GetPos().SetX(cosWav);
+	this->GetPos().SetY(sinWav);
+	inc += 2*pi / 2;
+	cosWav = (bossPosX) + cosf( angle+inc ) * 200;
+	sinWav = (bossPosY) + sinf( angle+inc ) * 200;
+	enemyB2.GetPos().SetX(cosWav);
+	enemyB2.GetPos().SetY(sinWav);
+	MoveSprite(this->GetSpriteID(), this->GetPos().GetX(), this->GetPos().GetY());
+	MoveSprite(enemyB2.GetSpriteID(), enemyB2.GetPos().GetX(), enemyB2.GetPos().GetY());
 }

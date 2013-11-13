@@ -1,4 +1,4 @@
-//Last Edit 11/6/2013
+//Last Edit 11/13/2013
 //Will Gilstrap
 /////////////////////
 #include "AIE.h"
@@ -33,15 +33,15 @@ bool Collision::CheckCollision(Enemy& obj1, Player& obj2) {
 	double radiusEnemy = obj1.GetWidth() / 2;
 
 	double rB = obj2.GetPos().GetX();
-	double radiusBullet = obj2.GetWidth() / 2;
+	double radiusPlayer = obj2.GetWidth() / 2;
 
 	double distX = obj1.GetPos().GetX() - obj2.GetPos().GetX();
 	double distY = obj1.GetPos().GetY() - obj2.GetPos().GetY();
 
 	double dist = sqrt((distX * distX) + (distY * distY));
-	double radii = (radiusEnemy + radiusBullet) * (radiusEnemy + radiusBullet);
+	double radii = (radiusEnemy + radiusPlayer) * (radiusEnemy + radiusPlayer);
 
-	if (dist < radiusEnemy + radiusBullet)
+	if (dist < radiusEnemy + radiusPlayer)
 		return true;
 	else
 		return false;

@@ -107,27 +107,27 @@ void Enemy::EnemyShoot(EBullet& obj, Enemy& enemy) // enemy shoot
 
 void Enemy::CheckEnemyCollision(Enemy& enemy, Enemy& enemy2, Enemy& enemy3, PBullet& playerBullet, PBullet& playerBullet2, PBullet& playerBullet3, Player& player) // check collision of enemys
 {
-
+	Engine e;
 	if (playerBullet.dead == true && playerBullet2.dead == true && playerBullet3.dead == true)
 		player.IfDead(playerBullet, playerBullet2, playerBullet3, player);
 
 	if (Collision::CheckCollision(enemy, playerBullet) == true || Collision::CheckCollision(enemy, playerBullet2) == true || Collision::CheckCollision(enemy, playerBullet3) == true)
 	{
-		//scores++;
+		e.SetScore(e.GetScoreP());
 		//checkKilled++;
 		enemy.ResetEnemy(enemy);
 	}
 
 	if (Collision::CheckCollision(enemy2, playerBullet) == true || Collision::CheckCollision(enemy2, playerBullet2) == true || Collision::CheckCollision(enemy2, playerBullet3) == true)
 	{
-		//scores++;
+		e.SetScore(e.GetScoreP());
 		//checkKilled++;
 		enemy2.ResetEnemy(enemy2);
 	}
 
 	if (Collision::CheckCollision(enemy3, playerBullet) == true || Collision::CheckCollision(enemy3, playerBullet2) == true || Collision::CheckCollision(enemy3, playerBullet3) == true)
 	{
-		//scores++;
+		e.SetScore(e.GetScoreP());
 		//checkKilled++;
 		enemy3.ResetEnemy(enemy3);
 	}

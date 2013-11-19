@@ -1,4 +1,4 @@
-//Last Edit 11/13/2013
+//Last Edit 11/18/2013
 //Will Gilstrap
 /////////////////////
 #include "AIE.H"
@@ -12,7 +12,6 @@
 
 int frameCounter = 0;
 int state = 0;
-unsigned int scores = 0;
 Menu m;
 Play p;
 GameOver g;
@@ -61,6 +60,7 @@ void Engine::RunGame(int &tick, Sprite &splash, unsigned int &bgMenu, EBullet * 
 
 void Engine::InitVars()
 {
+	SetScore(0);
 	unsigned int bgImage = -1;
 	unsigned int bgGameOver = -1;
 	Player player1; //= {687, 386, 0, 0, -1 , 100, 50};
@@ -294,7 +294,7 @@ void Play::UpdateGame(EBullet * enemyHell[], unsigned int& bgImage, unsigned int
 		//gameProcess = &bossState;
 
 	char score[10]; // buffer
-	itoa(scores,score,10); // convert int to string
+	itoa(GetScore(),score,10); // convert int to string
 	DrawString("Score: ", 1000, 25, SColour(0,0xFF,0,0));
 	DrawString(score, 1100, 25, SColour(0,0x7F,0,0x7F)); // draw string
 
@@ -408,7 +408,7 @@ void Boss::DrawBoss(unsigned int& bgImage, Player& player1, PBullet& playerBulle
 {
 	DrawSprite(bgImage);
 	char score[10];
-	itoa(scores,score,10);
+	itoa(GetScore(),score,10);
 	DrawString("Score: ", 1000, 25, SColour(0,0xFF,0,0));
 	DrawString(score, 1100, 25, SColour(0,0x7F,0,0x7F));
 

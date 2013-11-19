@@ -117,6 +117,7 @@ public:
 		float mag = sqrt(v.x*v.x + v.y*v.y + v.z*v.z);
 		v = {v.x/mag, v.y/mag, v.z/mag};
 		return v;
+	}
 	
 	static vector3 GetNormal(vector3 &v) 
 	{
@@ -132,9 +133,9 @@ public:
 
 	static vector3 CrossProduct(vector3& c)
 	{
-		return vector3( y * c.z - z * c.y,
-						z * c.x - x * c.z,
-						x * c.y - y * c.x);
+		return vector3( this->y * c.z - this->z * c.y,
+						this->z * c.x - this->x * c.z,
+						this->x * c.y - this->y * c.x);
 	}
 
 };

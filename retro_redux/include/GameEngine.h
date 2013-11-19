@@ -1,4 +1,4 @@
-//Last Edit 11/13/2013
+//Last Edit 11/18/2013
 //Will Gilstrap
 /////////////////////
 #ifndef _GAMEENGINE_H_
@@ -39,10 +39,17 @@ public:
 	// Gets
 	int GetScreenX() {return m_SCREEN_X;}
 	int GetScreenY() {return m_SCREEN_Y;}
+	int GetScore() {return m_iScores;}
+	int GetScoreP() {return m_iScores++;}
 	Engine() { }
+
+	// Sets
+	void SetScore(int a_score) {this->m_iScores = a_score;}
+
 private:
 	static const int m_SCREEN_X = 1280;
 	static const int m_SCREEN_Y = 780;
+	unsigned int m_iScores;
 
 };
 

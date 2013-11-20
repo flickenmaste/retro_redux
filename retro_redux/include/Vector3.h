@@ -1,5 +1,5 @@
 //class vector 3d
-//Last Edit 11/5/2013
+//Last Edit 11/19/2013
 //Will Gilstrap
 /////////////////////
 #ifndef _VECTOR3_H_
@@ -97,7 +97,7 @@ public:
 		return temp;
 	}
 
-	vector3 operator/ (float s) //scalar divide /=
+	vector3 operator/= (float s) //scalar divide /=
 	{
 		vector3 temp;
 		temp.x = this->x /= s; 
@@ -115,7 +115,9 @@ public:
 	static vector3 Normalise(vector3 &v)
 	{
 		float mag = sqrt(v.x*v.x + v.y*v.y + v.z*v.z);
-		v = {v.x/mag, v.y/mag, v.z/mag};
+		v.x = v.x/mag;
+		v.y = v.y/mag;
+		v.z = v.z/mag;
 		return v;
 	}
 	
@@ -131,11 +133,26 @@ public:
 		return (a.x * b.x + a.y * b.y + a.z * b.z); 
 	}
 
-	static vector3 CrossProduct(vector3& c)
+	static vector3 CrossProduct(vector3 &a, vector3 &c)
 	{
-		return vector3( this->y * c.z - this->z * c.y,
-						this->z * c.x - this->x * c.z,
-						this->x * c.y - this->y * c.x);
+		vector3 temp;
+		temp.y = a.y * c.z - a.z * c.y,
+		temp.z = a.z * c.x - a.x * c.z,
+		temp.x = a.x * c.y - a.y * c.x;
+		return temp;
+	}
+
+	// calc angle
+	static float GetAngle(vector3 &a, vector3 &b)
+	{
+		float scalar = DotProduct(a, b);
+		float aMag = GetMagnitude(a);
+		float bMag = GetMagnitude(b);
+		float timeMag = aMag * bMag;
+
+		float angle = acos(scalar / timeMag);
+
+		return angle;
 	}
 
 };

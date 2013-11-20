@@ -60,7 +60,7 @@ public:
 		return temp;
 	}
 
-	float DotProduct(vector2 &a, vector2 &b) 
+	static float DotProduct(vector2 &a, vector2 &b) 
 	{ 
 		return (a.x * b.x + a.y * b.y); 
 	}
@@ -74,7 +74,8 @@ public:
 		return result;
 	}
 
-	float Lerp(vector2 &a, vector2 &b, float tX)
+	// Linear Interpolation
+	static float Lerp(vector2 &a, vector2 &b, float tX)
 	{	
 		return (((tX - a.x)*(b.y - a.y)) 
 			/ (b.x - a.x)) + a.y;

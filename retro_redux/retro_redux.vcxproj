@@ -128,9 +128,11 @@
     <ClInclude Include="include\AIE.h" />
     <ClInclude Include="include\Bullets.h" />
     <ClInclude Include="include\Collision.h" />
+    <ClInclude Include="include\ComMath.h" />
     <ClInclude Include="include\Enemy.h" />
     <ClInclude Include="include\GameEngine.h" />
     <ClInclude Include="include\highScores.h" />
+    <ClInclude Include="include\Matrix.h" />
     <ClInclude Include="include\Player.h" />
     <ClInclude Include="include\Sprite.h" />
     <ClInclude Include="include\Vector2.h" />

@@ -1,5 +1,5 @@
 //class vector 2d
-//Last Edit 11/18/2013
+//Last Edit 11/25/2013
 //Will Gilstrap
 /////////////////////
 #ifndef _VECTOR2_H_
@@ -65,7 +65,7 @@ public:
 		return (a.x * b.x + a.y * b.y); 
 	}
 
-	vector2 GetNormal(vector2 &v) 
+	static vector2 GetNormal(vector2 &v) 
 	{
 		float mag = sqrt(v.x*v.x + v.y*v.y);
 		vector2 result;
@@ -75,11 +75,21 @@ public:
 	}
 
 	// Linear Interpolation
-	static float Lerp(vector2 &a, vector2 &b, float tX)
+	static float lerp(vector2 &a, vector2 &b, float &tX)
 	{	
 		return (((tX - a.x)*(b.y - a.y)) 
 			/ (b.x - a.x)) + a.y;
 	}
+
+	
+	static vector2 Lerp(vector2 &a, vector2 &b, float &tX)
+	{
+		vector2 result;
+		result.SetX(a.x + (b.x - a.x) * tX);
+		result.SetY(a.y + (b.y - a.y) * tX);
+		return result;
+	}
+	
 	
 private:
 	float x;

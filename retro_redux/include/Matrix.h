@@ -1,4 +1,4 @@
-//Last Edit 11/19/2013
+//Last Edit 11/25/2013
 //Will Gilstrap
 /////////////////////
 #ifndef _MATRIX_H_
@@ -88,7 +88,7 @@ public:
 	static Matrix4 Multi(Matrix4 &a, Matrix4 &b)
 	{
 		Matrix4 temp;
-		float product[3][3] = {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}};
+		float product[4][4] = {{0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}};
 
 		for (int row = 0; row < 4; row++) {
         for (int col = 0; col < 4; col++) {

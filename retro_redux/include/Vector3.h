@@ -1,5 +1,5 @@
 //class vector 3d
-//Last Edit 11/19/2013
+//Last Edit 11/25/2013
 //Will Gilstrap
 /////////////////////
 #ifndef _VECTOR3_H_
@@ -150,7 +150,7 @@ public:
 		float bMag = GetMagnitude(b);
 		float timeMag = aMag * bMag;
 
-		float angle = acos(scalar / timeMag);
+		float angle = acosf(scalar / timeMag);
 
 		return angle;
 	}

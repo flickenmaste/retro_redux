@@ -5,6 +5,12 @@
 #define _COMMATH_H_
 #define FPI 3.14159265358979323846
 
+#ifdef DLL
+        #define DLLEXPORT __declspec(dllexport)
+#else
+        #define DLLEXPORT __declspec(dllimport)
+#endif
+
 #include <math.h>
 #include <stdlib.h>
 

@@ -3,6 +3,7 @@
 /////////////////////
 #include "AIE.h"
 #include "Sprite.h"
+#include "Bullets.h"
 
 // Get Set v_position
 	void Sprite::SetPos(const float &x, const float &y)
@@ -37,6 +38,7 @@
 	{
 		name.m_iSpriteID = CreateSprite( a_Texture, a_iWidth, a_iHeight, true ); // do something here
 	}
+
 	int Sprite::GetSpriteID()
 	{
 		return m_iSpriteID;

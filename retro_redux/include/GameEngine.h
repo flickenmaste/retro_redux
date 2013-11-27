@@ -16,22 +16,22 @@ public:
 	void (Engine::*Process)(int &tick, Sprite &splash, unsigned int &bgMenu);
 	void RunEngine();
 	
-	void RunGame(int &tick, Sprite &splash, unsigned int &bgMenu, EBullet * enemyHell[], unsigned int& bgImage, unsigned int& bgGameOver, Player& player1, PBullet& playerBullet, 
+	void RunGame(int &tick, Sprite &splash, unsigned int &bgMenu, EBullet enemyHell[], unsigned int& bgImage, unsigned int& bgGameOver, Player& player1, PBullet& playerBullet, 
 	PBullet& playerBullet2, PBullet& playerBullet3, Enemy& enemy, Enemy& enemy2, Enemy& enemy3, Enemy& boss, Enemy& enemyB1, Enemy& enemyB2, EBullet& enemyBullet);
 
-	void InitGame(EBullet * enemyHell[], unsigned int& bgImage, unsigned int& bgGameOver, Player& player1, PBullet& playerBullet, 
+	void InitGame(EBullet enemyHell[], unsigned int& bgImage, unsigned int& bgGameOver, Player& player1, PBullet& playerBullet, 
 	PBullet& playerBullet2, PBullet& playerBullet3, Enemy& enemy, Enemy& enemy2,
 	Enemy& enemy3, Enemy& boss, Enemy& enemyB1, Enemy& enemyB2, EBullet& enemyBullet);
 	void InitVars();
 
-	void InitMenu(EBullet * enemyHell[], unsigned int& bgImage, unsigned int& bgGameOver, Player& player1, PBullet& playerBullet, 
+	void InitMenu(EBullet enemyHell[], unsigned int& bgImage, unsigned int& bgGameOver, Player& player1, PBullet& playerBullet, 
 	PBullet& playerBullet2, PBullet& playerBullet3, Enemy& enemy, Enemy& enemy2, Enemy& enemy3, Enemy& boss, Enemy& enemyB1, Enemy& enemyB2, EBullet& enemyBullet);
 	void MenuState(int &tick, Sprite &splash, unsigned int &bgMenu);
 	
-	void PlayState(EBullet * enemyHell[], unsigned int& bgImage, unsigned int& bgGameOver, Player& player1, PBullet& playerBullet, 
+	void PlayState(EBullet enemyHell[], unsigned int& bgImage, unsigned int& bgGameOver, Player& player1, PBullet& playerBullet, 
 	PBullet& playerBullet2, PBullet& playerBullet3, Enemy& enemy, Enemy& enemy2, Enemy& enemy3, Enemy& boss, Enemy& enemyB1, Enemy& enemyB2, EBullet& enemyBullet);
 
-	void InitBoss(int &tick, Sprite &splash, unsigned int &bgMenu, EBullet * enemyHell[], unsigned int& bgImage, unsigned int& bgGameOver, Player& player1, PBullet& playerBullet, 
+	void InitBoss(int &tick, Sprite &splash, unsigned int &bgMenu, EBullet enemyHell[], unsigned int& bgImage, unsigned int& bgGameOver, Player& player1, PBullet& playerBullet, 
 	PBullet& playerBullet2, PBullet& playerBullet3, Enemy& enemy, Enemy& enemy2, Enemy& enemy3, Enemy& boss, Enemy& enemyB1, Enemy& enemyB2, EBullet& enemyBullet);
 	void BossState(unsigned int& bgImage, Player& player1, PBullet& playerBullet, 
 	PBullet& playerBullet2, PBullet& playerBullet3, Enemy& boss, Enemy& enemyB1, Enemy& enemyB2);
@@ -66,9 +66,9 @@ public:
 class Play: public Engine
 {
 public:
-	void UpdateGame(EBullet * enemyHell[], unsigned int& bgImage, unsigned int& bgGameOver, Player& player1, PBullet& playerBullet, 
+	void UpdateGame(EBullet enemyHell[], unsigned int& bgImage, unsigned int& bgGameOver, Player& player1, PBullet& playerBullet, 
 	PBullet& playerBullet2, PBullet& playerBullet3, Enemy& enemy, Enemy& enemy2, Enemy& enemy3, Enemy& boss, Enemy& enemyB1, Enemy& enemyB2, EBullet& enemyBullet);
-	void DrawGame(EBullet * enemyHell[], unsigned int& bgImage, unsigned int& bgGameOver, Player& player1, PBullet& playerBullet, 
+	void DrawGame(EBullet enemyHell[], unsigned int& bgImage, unsigned int& bgGameOver, Player& player1, PBullet& playerBullet, 
 	PBullet& playerBullet2, PBullet& playerBullet3, Enemy& enemy, Enemy& enemy2, Enemy& enemy3, Enemy& boss, Enemy& enemyB1, Enemy& enemyB2, EBullet& enemyBullet);
 };
 

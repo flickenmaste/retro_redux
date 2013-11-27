@@ -104,6 +104,34 @@ void Enemy::EnemyShoot(EBullet& obj, Enemy& enemy) // enemy shoot
 	obj.GetPos().SetY(moveSpeed);
 }
 
+void Enemy::EnemyShoot(EBullet enemyHell[], Enemy &enemy3)
+{
+	float speed = 2;
+	float sideShot = -5;
+	int side = sideShot;
+	int speedd = speed;
+	for (int i = 0; i < 10; i++)
+	{
+	if (enemyHell[i].GetPos().GetY() <= 0)
+	{
+		enemyHell[i].GetPos().SetX(enemy3.GetPos().GetX());
+		enemyHell[i].GetPos().SetY(enemy3.GetPos().GetY());
+	}
+
+	if (enemyHell[i].GetPos().GetY() >= 780)
+	{
+		enemyHell[i].GetPos().SetX(enemy3.GetPos().GetX());
+		enemyHell[i].GetPos().SetY(enemy3.GetPos().GetY());
+	}
+	
+	side += sideShot;
+	speedd += speed;
+
+	enemyHell[i].GetPos().SetX(side);
+	enemyHell[i].GetPos().SetY(speedd);
+	sideShot++;
+	}
+}
 
 void Enemy::CheckEnemyCollision(Enemy& enemy, Enemy& enemy2, Enemy& enemy3, PBullet& playerBullet, PBullet& playerBullet2, PBullet& playerBullet3, Player& player) // check collision of enemys
 {
@@ -111,7 +139,9 @@ void Enemy::CheckEnemyCollision(Enemy& enemy, Enemy& enemy2, Enemy& enemy3, PBul
 	if (playerBullet.dead == true && playerBullet2.dead == true && playerBullet3.dead == true)
 		player.IfDead(playerBullet, playerBullet2, playerBullet3, player);
 
-	if (Collision::CheckCollision(enemy, playerBullet) == true || Collision::CheckCollision(enemy, playerBullet2) == true || Collision::CheckCollision(enemy, playerBullet3) == true)
+	if (Collision::CheckCollision(enemy, playerBullet)
+		|| Collision::CheckCollision(enemy, playerBullet2) 
+		|| Collision::CheckCollision(enemy, playerBullet3))
 	{
 		e.SetScore(e.GetScoreP());
 		//checkKilled++;

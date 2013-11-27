@@ -1,9 +1,15 @@
 //class vector 2d
-//Last Edit 11/25/2013
+//Last Edit 11/18/2013
 //Will Gilstrap
 /////////////////////
 #ifndef _VECTOR2_H_
 #define _VECTOR2_H_
+
+#ifdef DLL
+        #define DLLEXPORT __declspec(dllexport)
+#else
+        #define DLLEXPORT __declspec(dllimport)
+#endif
 
 #include <math.h>
 #include <stdlib.h>

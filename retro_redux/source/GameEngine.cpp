@@ -3,6 +3,7 @@
 /////////////////////
 #include "AIE.H"
 #include <iostream>
+#include <time.h>
 #include "GameEngine.h"
 #include "Sprite.h"
 #include "Player.h"
@@ -21,6 +22,7 @@ Enemy e;
 
 void Engine::RunEngine()
 {
+	srand(time(NULL));
 	Initialise(GetScreenX(), GetScreenY(), false, "Shoot em up 2");
 	InitVars();
 	/*
@@ -37,7 +39,7 @@ void Engine::RunEngine()
 	*/
 }
 
-void Engine::RunGame(int &tick, Sprite &splash, unsigned int &bgMenu, EBullet * enemyHell[], unsigned int& bgImage, unsigned int& bgGameOver, Player& player1, PBullet& playerBullet, 
+void Engine::RunGame(int &tick, Sprite &splash, unsigned int &bgMenu, EBullet enemyHell[], unsigned int& bgImage, unsigned int& bgGameOver, Player& player1, PBullet& playerBullet, 
 	PBullet& playerBullet2, PBullet& playerBullet3, Enemy& enemy, Enemy& enemy2, Enemy& enemy3, Enemy& boss, Enemy& enemyB1, Enemy& enemyB2, EBullet& enemyBullet)
 {
 	state = 1;
@@ -77,7 +79,7 @@ void Engine::InitVars()
 	Enemy enemyB2; //= {0, 0, 0, 1, -1 , 50, 50};
 	EBullet enemyBullet; //= {600, -10, 0, 4, -1 , 10, 10, false, true};
 	bool menuEnd = false;
-	EBullet * enemyHell[10];
+	EBullet enemyHell[10];
 	EBullet bossShot[10];
 	EBullet bossShot2[10];
 	EBullet miniShot[2];
@@ -88,11 +90,11 @@ void Engine::InitVars()
 	int bossHP = 2000;
 	int tick = 0;
 
-	InitGame(&enemyHell[10], bgImage, bgGameOver, player1, playerBullet, playerBullet2, playerBullet3, enemy, enemy2, enemy3, boss, enemyB1, enemyB2, enemyBullet);
+	InitGame(enemyHell, bgImage, bgGameOver, player1, playerBullet, playerBullet2, playerBullet3, enemy, enemy2, enemy3, boss, enemyB1, enemyB2, enemyBullet);
 
 }
 
-void Engine::InitGame(EBullet * enemyHell[], unsigned int& bgImage, unsigned int& bgGameOver, Player& player1, PBullet& playerBullet, 
+void Engine::InitGame(EBullet enemyHell[], unsigned int& bgImage, unsigned int& bgGameOver, Player& player1, PBullet& playerBullet, 
 	PBullet& playerBullet2, PBullet& playerBullet3, Enemy& enemy, Enemy& enemy2, Enemy& enemy3, Enemy& boss, Enemy& enemyB1, Enemy& enemyB2, EBullet& enemyBullet)
 {
 	
@@ -109,10 +111,10 @@ void Engine::InitGame(EBullet * enemyHell[], unsigned int& bgImage, unsigned int
 	enemy2.SetSpriteID(enemy2, "./images/enemy.png", 50, 50);
 	enemy3.SetSpriteID(enemy3, "./images/enemy.png", 50, 50);
 	enemyBullet.SetSpriteID(enemyBullet, "./images/enemybullet.png", 10, 10);
-	/*
+	
 	for (int i = 0; i < 10; i++)
 	{
-		enemyHell[i].SetSpriteID(enemyHell, "./images/enemybullet.png", 10, 10, true);
+		enemyHell[i].SetSpriteID(enemyHell[i], "./images/enemybullet.png", 10, 10);
 		enemyHell[i].GetPos().SetX(600);
 		enemyHell[i].GetPos().SetY(-10);
 		enemyHell[i].GetSpeed().SetX(0);
@@ -120,11 +122,11 @@ void Engine::InitGame(EBullet * enemyHell[], unsigned int& bgImage, unsigned int
 		enemyHell[i].SetWidth(10);
 		enemyHell[i].SetHeight(10);
 	}
-	*/
-	InitMenu(&enemyHell[10], bgImage, bgGameOver, player1, playerBullet, playerBullet2, playerBullet3, enemy, enemy2, enemy3, boss, enemyB1, enemyB2, enemyBullet);
+	
+	InitMenu(enemyHell, bgImage, bgGameOver, player1, playerBullet, playerBullet2, playerBullet3, enemy, enemy2, enemy3, boss, enemyB1, enemyB2, enemyBullet);
 }
 
-void Engine::InitMenu(EBullet * enemyHell[], unsigned int& bgImage, unsigned int& bgGameOver, Player& player1, PBullet& playerBullet, 
+void Engine::InitMenu(EBullet enemyHell[], unsigned int& bgImage, unsigned int& bgGameOver, Player& player1, PBullet& playerBullet, 
 	PBullet& playerBullet2, PBullet& playerBullet3, Enemy& enemy, Enemy& enemy2, Enemy& enemy3, Enemy& boss, Enemy& enemyB1, Enemy& enemyB2, EBullet& enemyBullet)
 {
 	Sprite splash;
@@ -135,7 +137,7 @@ void Engine::InitMenu(EBullet * enemyHell[], unsigned int& bgImage, unsigned int
 	MoveSprite(bgMenu, GetScreenX()>>1, GetScreenY()>>1);
 	int tick = 0;
 	
-	InitBoss(tick, splash, bgMenu, &enemyHell[10], bgImage, bgGameOver, player1, playerBullet, playerBullet2, playerBullet3, enemy, enemy2, enemy3, boss, enemyB1, enemyB2, enemyBullet);
+	InitBoss(tick, splash, bgMenu, enemyHell, bgImage, bgGameOver, player1, playerBullet, playerBullet2, playerBullet3, enemy, enemy2, enemy3, boss, enemyB1, enemyB2, enemyBullet);
 	/*
 	Process = &Menu::MenuState;
 	do {
@@ -146,14 +148,14 @@ void Engine::InitMenu(EBullet * enemyHell[], unsigned int& bgImage, unsigned int
 	*/
 }
 
-void Engine::InitBoss(int &tick, Sprite &splash, unsigned int &bgMenu, EBullet * enemyHell[], unsigned int& bgImage, unsigned int& bgGameOver, Player& player1, PBullet& playerBullet, 
+void Engine::InitBoss(int &tick, Sprite &splash, unsigned int &bgMenu, EBullet enemyHell[], unsigned int& bgImage, unsigned int& bgGameOver, Player& player1, PBullet& playerBullet, 
 	PBullet& playerBullet2, PBullet& playerBullet3, Enemy& enemy, Enemy& enemy2, Enemy& enemy3, Enemy& boss, Enemy& enemyB1, Enemy& enemyB2, EBullet& enemyBullet)
 {
 	boss.SetSpriteID(boss, "./images/enemy.png", 100, 100);
 	enemyB1.SetSpriteID(enemyB1, "./images/enemy.png", 50, 50);
 	enemyB2.SetSpriteID(enemyB2, "./images/enemy.png", 50, 50);
 
-	RunGame(tick, splash, bgMenu, &enemyHell[10], bgImage, bgGameOver, player1, playerBullet, playerBullet2, playerBullet3, enemy, enemy2, enemy3, boss, enemyB1, enemyB2, enemyBullet);
+	RunGame(tick, splash, bgMenu, enemyHell, bgImage, bgGameOver, player1, playerBullet, playerBullet2, playerBullet3, enemy, enemy2, enemy3, boss, enemyB1, enemyB2, enemyBullet);
 }
 
 // Menu update
@@ -201,13 +203,14 @@ void Engine::MenuState(int &tick, Sprite &splash, unsigned int &bgMenu)
 }
 
 // Play update
-void Play::UpdateGame(EBullet * enemyHell[], unsigned int& bgImage, unsigned int& bgGameOver, Player& player1, PBullet& playerBullet, 
+void Play::UpdateGame(EBullet enemyHell[], unsigned int& bgImage, unsigned int& bgGameOver, Player& player1, PBullet& playerBullet, 
 	PBullet& playerBullet2, PBullet& playerBullet3, Enemy& enemy, Enemy& enemy2, Enemy& enemy3, Enemy& boss, Enemy& enemyB1, Enemy& enemyB2, EBullet& enemyBullet)
 {
 	ClearScreen();
 	player1.MovePlayer(player1);
 	player1.PlayerShoot(playerBullet, playerBullet2, playerBullet3);
 	enemy.SpawnEnemy(enemy);
+	enemy3.EnemyShoot(*enemyHell, enemy3);
 	//e.EnemyShoot(enemyBullet, pl.GetPlayerLocationX(), pl.GetPlayerLocationY());
 	//e.EnemyShoot(pl.GetPlayerLocationX(player1), pl.GetPlayerLocationY(player1));
 
@@ -311,12 +314,12 @@ void Play::UpdateGame(EBullet * enemyHell[], unsigned int& bgImage, unsigned int
 	MoveSprite(enemy2.GetSpriteID(), enemy2.GetPos().GetX(), enemy2.GetPos().GetY());
 	MoveSprite(enemy3.GetSpriteID(), enemy3.GetPos().GetX(), enemy3.GetPos().GetY());
 	MoveSprite(enemyBullet.GetSpriteID(), enemyBullet.GetPos().GetX(), enemyBullet.GetPos().GetY());
-	/*
+	
 	for (int i = 0; i < 10; i++)
 	{
-	MoveSprite(enemyHell[i].sprite, enemyHell[i].position.x, enemyHell[i].position.y);
+		MoveSprite(enemyHell[i].GetSpriteID(), enemyHell[i].GetPos().GetX(), enemyHell[i].GetPos().GetY());
 	}
-	*/
+	
 	if (IsKeyDown(KEY_SPECIAL+38) == true)
 		state = 1;
 
@@ -325,7 +328,7 @@ void Play::UpdateGame(EBullet * enemyHell[], unsigned int& bgImage, unsigned int
 }
 
 // Play draw
-void Play::DrawGame(EBullet * enemyHell[], unsigned int& bgImage, unsigned int& bgGameOver, Player& player1, PBullet& playerBullet, 
+void Play::DrawGame(EBullet enemyHell[], unsigned int& bgImage, unsigned int& bgGameOver, Player& player1, PBullet& playerBullet, 
 	PBullet& playerBullet2, PBullet& playerBullet3, Enemy& enemy, Enemy& enemy2, Enemy& enemy3, Enemy& boss, Enemy& enemyB1, Enemy& enemyB2, EBullet& enemyBullet)
 {
 	DrawSprite(bgImage);
@@ -337,22 +340,22 @@ void Play::DrawGame(EBullet * enemyHell[], unsigned int& bgImage, unsigned int& 
 	DrawSprite(enemy2.GetSpriteID());
 	DrawSprite(enemy3.GetSpriteID());
 	DrawSprite(enemyBullet.GetSpriteID());
-	/*
+	
 	for (int i = 0; i < 10; i++)
 	{
-		DrawSprite(enemyHell[i].sprite);
+		DrawSprite(enemyHell[i].GetSpriteID());
 	}
-	*/
+	
 }
 
 // Play State
-void Engine::PlayState(EBullet * enemyHell[], unsigned int& bgImage, unsigned int& bgGameOver, Player& player1, PBullet& playerBullet, 
+void Engine::PlayState(EBullet enemyHell[], unsigned int& bgImage, unsigned int& bgGameOver, Player& player1, PBullet& playerBullet, 
 	PBullet& playerBullet2, PBullet& playerBullet3, Enemy& enemy, Enemy& enemy2, Enemy& enemy3, Enemy& boss, Enemy& enemyB1, Enemy& enemyB2, EBullet& enemyBullet)
 {
 	ClearScreen();
-	p.UpdateGame(&enemyHell[10], bgImage, bgGameOver, player1, playerBullet, 
+	p.UpdateGame(enemyHell, bgImage, bgGameOver, player1, playerBullet, 
 	playerBullet2, playerBullet3, enemy, enemy2, enemy3, boss, enemyB1, enemyB2, enemyBullet);
-	p.DrawGame(&enemyHell[10], bgImage, bgGameOver, player1, playerBullet, 
+	p.DrawGame(enemyHell, bgImage, bgGameOver, player1, playerBullet, 
 	playerBullet2, playerBullet3, enemy, enemy2, enemy3, boss, enemyB1, enemyB2, enemyBullet);
 }
 

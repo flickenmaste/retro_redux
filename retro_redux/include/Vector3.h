@@ -5,6 +5,12 @@
 #ifndef _VECTOR3_H_
 #define _VECTOR3_H_
 
+#ifdef DLL
+        #define DLLEXPORT __declspec(dllexport)
+#else
+        #define DLLEXPORT __declspec(dllimport)
+#endif
+
 #include <math.h> 
 #include <stdlib.h>
 

@@ -17,7 +17,7 @@ public:
 	void SpawnEnemySide(Enemy& obj);
 	void ResetEnemySide(Enemy& obj);
 	void EnemyShoot(EBullet& obj, Enemy& enemy);
-	void EnemyShoot(int x, int y);
+	void EnemyShoot(EBullet enemyHell[], Enemy &enemy3);
 	void EnemyPattern(Enemy& enemyB2);
 	static void CheckEnemyCollision(Enemy& enemy, Enemy& enemy2, Enemy& enemy3, PBullet& playerBullet, PBullet& playerBullet2, PBullet& playerBullet3, Player& player);
 	static void CheckEnemyCollision(PBullet& playerBullet, PBullet& playerBullet2, PBullet& playerBullet3, Player& player);

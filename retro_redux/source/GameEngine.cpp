@@ -13,6 +13,7 @@
 
 int frameCounter = 0;
 int state = 0;
+unsigned int scores = 0;
 Menu m;
 Play p;
 GameOver g;
@@ -62,7 +63,6 @@ void Engine::RunGame(int &tick, Sprite &splash, unsigned int &bgMenu, EBullet en
 
 void Engine::InitVars()
 {
-	SetScore(0);
 	unsigned int bgImage = -1;
 	unsigned int bgGameOver = -1;
 	Player player1; //= {687, 386, 0, 0, -1 , 100, 50};
@@ -89,6 +89,7 @@ void Engine::InitVars()
 	float circle = 10;
 	int bossHP = 2000;
 	int tick = 0;
+	enemy3.EScores = 0;
 
 	InitGame(enemyHell, bgImage, bgGameOver, player1, playerBullet, playerBullet2, playerBullet3, enemy, enemy2, enemy3, boss, enemyB1, enemyB2, enemyBullet);
 
@@ -207,6 +208,7 @@ void Play::UpdateGame(EBullet enemyHell[], unsigned int& bgImage, unsigned int& 
 	PBullet& playerBullet2, PBullet& playerBullet3, Enemy& enemy, Enemy& enemy2, Enemy& enemy3, Enemy& boss, Enemy& enemyB1, Enemy& enemyB2, EBullet& enemyBullet)
 {
 	ClearScreen();
+	scores = enemy3.EScores;
 	player1.MovePlayer(player1);
 	player1.PlayerShoot(playerBullet, playerBullet2, playerBullet3);
 	enemy.SpawnEnemy(enemy);
@@ -297,7 +299,7 @@ void Play::UpdateGame(EBullet enemyHell[], unsigned int& bgImage, unsigned int& 
 		//gameProcess = &bossState;
 
 	char score[10]; // buffer
-	itoa(GetScore(),score,10); // convert int to string
+	itoa(scores,score,10); // convert int to string
 	DrawString("Score: ", 1000, 25, SColour(0,0xFF,0,0));
 	DrawString(score, 1100, 25, SColour(0,0x7F,0,0x7F)); // draw string
 
@@ -411,7 +413,7 @@ void Boss::DrawBoss(unsigned int& bgImage, Player& player1, PBullet& playerBulle
 {
 	DrawSprite(bgImage);
 	char score[10];
-	itoa(GetScore(),score,10);
+	itoa(scores,score,10);
 	DrawString("Score: ", 1000, 25, SColour(0,0xFF,0,0));
 	DrawString(score, 1100, 25, SColour(0,0x7F,0,0x7F));
 

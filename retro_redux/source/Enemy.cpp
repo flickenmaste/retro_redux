@@ -143,21 +143,21 @@ void Enemy::CheckEnemyCollision(Enemy& enemy, Enemy& enemy2, Enemy& enemy3, PBul
 		|| Collision::CheckCollision(enemy, playerBullet2) 
 		|| Collision::CheckCollision(enemy, playerBullet3))
 	{
-		e.SetScore(e.GetScoreP());
+		enemy3.EScores++;
 		//checkKilled++;
 		enemy.ResetEnemy(enemy);
 	}
 
 	if (Collision::CheckCollision(enemy2, playerBullet) == true || Collision::CheckCollision(enemy2, playerBullet2) == true || Collision::CheckCollision(enemy2, playerBullet3) == true)
 	{
-		e.SetScore(e.GetScoreP());
+		enemy3.EScores++;
 		//checkKilled++;
 		enemy2.ResetEnemy(enemy2);
 	}
 
 	if (Collision::CheckCollision(enemy3, playerBullet) == true || Collision::CheckCollision(enemy3, playerBullet2) == true || Collision::CheckCollision(enemy3, playerBullet3) == true)
 	{
-		e.SetScore(e.GetScoreP());
+		enemy3.EScores++;
 		//checkKilled++;
 		enemy3.ResetEnemy(enemy3);
 	}

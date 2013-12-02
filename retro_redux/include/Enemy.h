@@ -12,6 +12,7 @@
 class Enemy: public Sprite
 {
 public:
+	int EScores;
 	void SpawnEnemy(Enemy& obj);
 	static void ResetEnemy(Enemy& obj);
 	void SpawnEnemySide(Enemy& obj);

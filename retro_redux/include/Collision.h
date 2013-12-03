@@ -14,6 +14,7 @@ public:
 	static bool CheckCollision(Enemy& obj1, PBullet& obj2);
 	static bool CheckCollision(Enemy& obj1, Player& obj2);
 	static bool CheckCollision(Player& obj1, EBullet& obj2);
+	static bool CheckCollision(Player& obj1, EBullet enemyHell[]);
 };
 
 

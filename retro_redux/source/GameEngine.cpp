@@ -1,4 +1,4 @@
-//Last Edit 11/18/2013
+//Last Edit 12/2/2013
 //Will Gilstrap
 /////////////////////
 #include "AIE.H"
@@ -246,7 +246,8 @@ void Play::UpdateGame(EBullet enemyHell[], unsigned int& bgImage, unsigned int& 
 		playerBullet2.GetPos().SetY(0);
 		playerBullet3.GetPos().SetX(0);
 		playerBullet3.GetPos().SetY(0);
-		//writeHS();
+		WriteHS();
+		scores = 0;
 	}
 	if (Collision::CheckCollision(enemy2, player1) == true) {
 		state = 3;
@@ -260,7 +261,8 @@ void Play::UpdateGame(EBullet enemyHell[], unsigned int& bgImage, unsigned int& 
 		playerBullet2.GetPos().SetY(0);
 		playerBullet3.GetPos().SetX(0);
 		playerBullet3.GetPos().SetY(0);
-		//writeHS();
+		WriteHS();
+		scores = 0;
 	}
 
 	if (Collision::CheckCollision(enemy3, player1) == true) {
@@ -275,7 +277,8 @@ void Play::UpdateGame(EBullet enemyHell[], unsigned int& bgImage, unsigned int& 
 		playerBullet2.GetPos().SetY(0);
 		playerBullet3.GetPos().SetX(0);
 		playerBullet3.GetPos().SetY(0);
-		//writeHS();
+		WriteHS();
+		scores = 0;
 	}
 
 	if (Collision::CheckCollision(player1,enemyBullet) == true) {
@@ -433,4 +436,10 @@ void Engine::BossState(unsigned int& bgImage, Player& player1, PBullet& playerBu
 	ClearScreen();
 	b.UpdateBoss(bgImage, player1, playerBullet, playerBullet2, playerBullet3, boss, enemyB1, enemyB2);
 	b.DrawBoss(bgImage, player1, playerBullet, playerBullet2, playerBullet3, boss, enemyB1, enemyB2);
+}
+// Write High Scores
+void Engine::WriteHS()
+{
+	HighScore h;
+	h.write(scores);
 }

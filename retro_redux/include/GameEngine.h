@@ -36,6 +36,8 @@ public:
 	void BossState(unsigned int& bgImage, Player& player1, PBullet& playerBullet, 
 	PBullet& playerBullet2, PBullet& playerBullet3, Enemy& boss, Enemy& enemyB1, Enemy& enemyB2);
 
+	void WriteHS();
+
 	// Gets
 	int GetScreenX() {return m_SCREEN_X;}
 	int GetScreenY() {return m_SCREEN_Y;}

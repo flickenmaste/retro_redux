@@ -1,4 +1,4 @@
-//Last Edit 11/13/2013
+//Last Edit 12/2/2013
 //Will Gilstrap
 /////////////////////
 #include "AIE.h"
@@ -67,3 +67,9 @@ bool Collision::CheckCollision(Player& obj1, EBullet& obj2) {
 	else
 		return false;
 }
+/*
+bool Collision::CheckCollision(Player& obj1, EBullet enemyHell[])
+{
+
+}
+*/
